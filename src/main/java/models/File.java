@@ -16,7 +16,7 @@ public class File {
 
     }
 
-    public File(String name, String extension, double size, Folder folder){
+    public File(String name, String extension, double size, Folder folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
@@ -35,17 +35,17 @@ public class File {
         this.id = id;
     }
 
-    @Column(name = "Filename")
+    @Column(name = "file_name")
     public String getName() {
         return name;
     }
 
-    @Column(name = "FileSize")
+    @Column(name = "file_size")
     public double getSize() {
         return size;
     }
-
-    @Column(name = "Folder")
+    @ManyToOne
+    @JoinColumn(name = "folder", nullable = false)
     public Folder getFolder() {
         return folder;
     }
@@ -71,9 +71,4 @@ public class File {
         this.size = size;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "foler_id", nullable = false)
-    public Ship getShip() {
-        return ship;
-    }
 }
