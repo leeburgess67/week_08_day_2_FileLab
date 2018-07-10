@@ -2,6 +2,8 @@ import db.DBHelper;
 import models.File;
 import models.Folder;
 
+import java.util.List;
+
 
 public class runner {
 
@@ -21,7 +23,12 @@ public class runner {
 
         File movieFile = new File("movie1", ".mp4", 1223.5, folder1);
         DBHelper.save(movieFile);
+
+        List<File> files = DBHelper.getAll(File.class);
+
     }
+
+
 
 
 }
