@@ -1,13 +1,18 @@
 import db.DBHelper;
 import models.File;
 import models.Folder;
+import models.Owner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class runner {
 
     public static void main(String[] args) {
+
+        Owner john = new Owner("John", "johnno111");
+
 
         Folder folder1 = new Folder("Documents");
         DBHelper.save(folder1);
@@ -24,7 +29,22 @@ public class runner {
         File movieFile = new File("movie1", ".mp4", 1223.5, folder1);
         DBHelper.save(movieFile);
 
+
+
         List<File> files = DBHelper.getAll(File.class);
+        musicFile.setName("Tunes");
+        DBHelper.save(musicFile);
+
+        List<File> filesForFolder = new ArrayList<File>();
+        filesForFolder.add(musicFile);
+        folder1.setFiles(filesForFolder);
+        folder1.getFiles();
+
+        List<Folder> foldersForOwner = new ArrayList<Folder>();
+        foldersForOwner.add(folder1);
+        john.setFolders(foldersForOwner);
+        john.getFolders();
+
 
     }
 
